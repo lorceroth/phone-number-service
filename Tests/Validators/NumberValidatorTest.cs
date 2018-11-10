@@ -16,7 +16,7 @@ namespace Tests.Validators
             var number = "+46712312123";
 
             // Act
-            bool validationResult = validator.Validate(number);
+            var validationResult = validator.Validate(number);
 
             // Assert
             validationResult.Should().BeTrue();
@@ -30,7 +30,7 @@ namespace Tests.Validators
             var number = "00467562341424";
 
             // Act
-            bool validationResult = validator.Validate(number);
+            var validationResult = validator.Validate(number);
 
             // Assert
             validationResult.Should().BeFalse();
@@ -44,7 +44,7 @@ namespace Tests.Validators
             var number = "T00467562341424";
 
             // Act
-            bool validationResult = validator.Validate(number);
+            var validationResult = validator.Validate(number);
 
             // Assert
             validationResult.Should().BeFalse();
