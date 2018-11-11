@@ -7,8 +7,10 @@ using System.Web.Http;
 
 namespace PhonenumberService
 {
-    public static class Services
+    public class Services
     {
+        #region Setup
+
         public static void Register(HttpConfiguration config)
         {
             var builder = new ContainerBuilder();
@@ -17,15 +19,24 @@ namespace PhonenumberService
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // Services
-            builder.RegisterType<NumberValidator>()
-                .InstancePerRequest();
-
-            builder.RegisterType<NumberFormatter>()
-                .UsingConstructor(typeof(NumberValidator))
-                .InstancePerRequest();
+            RegisterServices(builder);
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+        }
+
+        #endregion
+
+        protected static void RegisterServices(ContainerBuilder builder)
+        {
+            builder.RegisterType<NumberValidator>()
+                .As<INumberValidator>()
+                .InstancePerRequest();
+
+            builder.RegisterType<NumberFormatter>()
+                .As<INumberFormatter>()
+                .UsingConstructor(typeof(INumberValidator))
+                .InstancePerRequest();
         }
     }
 }

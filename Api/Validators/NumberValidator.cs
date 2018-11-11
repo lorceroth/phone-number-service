@@ -1,11 +1,10 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Api.Validators
 {
-    public class NumberValidator
+    public class NumberValidator : INumberValidator
     {
-        public static string ErrorMessage = "Invalid number format.";
+        public string ErrorMessage => "Invalid number format.";
 
         private string _format = @"^\+46[0-9]{9}$";
 

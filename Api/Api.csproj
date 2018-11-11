@@ -160,6 +160,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Services.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Formatters\INumberFormatter.cs" />
+    <Compile Include="Validators\INumberValidator.cs" />
     <Compile Include="Controllers\NumberController.cs" />
     <Compile Include="Formatters\NumberFormatter.cs" />
     <Compile Include="Global.asax.cs">

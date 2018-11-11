@@ -9,11 +9,11 @@ namespace Api.Controllers
 {
     public class NumberController : ApiController
     {
-        private NumberFormatter _formatter;
+        private INumberFormatter _formatter;
 
-        private NumberValidator _validator;
+        private INumberValidator _validator;
 
-        public NumberController(NumberFormatter formatter, NumberValidator validator)
+        public NumberController(INumberFormatter formatter, INumberValidator validator)
         {
             _formatter = formatter;
             _validator = validator;

@@ -1,18 +1,15 @@
 ﻿using Api.Validators;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Api.Formatters
 {
-    public class NumberFormatter
+    public class NumberFormatter : INumberFormatter
     {
         private string _format = "{0} {1:### ## ## ##}";
 
-        private NumberValidator _validator;
+        private INumberValidator _validator;
 
-        public NumberFormatter(NumberValidator validator)
+        public NumberFormatter(INumberValidator validator)
         {
             _validator = validator;
         }
@@ -21,7 +18,7 @@ namespace Api.Formatters
         {
             if (false == _validator.Validate(number))
             {
-                throw new FormatException(NumberValidator.ErrorMessage);
+                throw new FormatException(_validator.ErrorMessage);
             }
 
             var code = number.Substring(0, 3);
