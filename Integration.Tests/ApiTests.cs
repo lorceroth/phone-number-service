@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,7 +19,7 @@ namespace Integration.Tests
         {
             _client = new HttpClient()
             {
-                BaseAddress = new Uri("https://localhost/phonenumberservice/")
+                BaseAddress = new Uri("http://localhost/phonenumberservice/")
             };
         }
 
@@ -101,7 +102,7 @@ namespace Integration.Tests
 
         private static StringContent GetRequestObject(string number)
         {
-            return new StringContent(JsonConvert.SerializeObject(new { number = number }));
+            return new StringContent(JsonConvert.SerializeObject(new { number = number }), Encoding.UTF8, "application/json");
         }
     }
 }
