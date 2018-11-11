@@ -19,7 +19,7 @@ namespace Integration.Tests
         {
             _client = new HttpClient()
             {
-                BaseAddress = new Uri("http://localhost/phonenumberservice/")
+                BaseAddress = new Uri("https://localhost/phonenumberservice/")
             };
         }
 
